@@ -29,18 +29,18 @@ class Test10 {
         // Call a recursive routine by uncommenting the call you wish to
         // execute.
 
-          testList.write();
-          testList.insertEnd(new Character('!'));
-        //PB  testList.writeMirror();
-        //PC  testList.reverse();
-        //PD  testList.deleteEnd();
-        //PE  System.out.println("length = " +  testList.length());
+         testList.write();
+         testList.insertEnd(new Character('!'));
+         testList.writeMirror();
+         testList.reverse();
+         testList.deleteEnd();
+        System.out.println("length = " +  testList.length());
 
-        //BA  testList.unknown1();
-        //BB  testList.unknown2();
+        testList.unknown1();
+        testList.unknown2();
 
-        //1A  testList.iterReverse();
-        //1B  testList.stackWriteMirror();
+        testList.iterReverse();
+        testList.stackWriteMirror();
         //2   testList.aBeforeb();
         //3   testList.cRemove();
 

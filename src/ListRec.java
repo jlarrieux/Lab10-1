@@ -98,7 +98,9 @@ class ListRec extends SList {
     // printed to the output stream.
 
     {
-
+        System.out.print("Mirror: ");
+        writeMirrorSub(head);
+        System.out.println();
     }
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -109,6 +111,11 @@ class ListRec extends SList {
     // sublist that begins with the node referenced by p.
 
     {
+        if(p!=null){
+            System.out.print(p.getElement());
+            writeMirrorSub(p.getNext());
+            System.out.print(p.getElement());
+        }
 
     }
 
@@ -119,7 +126,10 @@ class ListRec extends SList {
     // Reverses the order of the elements in a list.
 
     {
-
+        System.out.print("Reverse: ");
+        reverseSub(null, head);
+        showStructure();
+        System.out.println();
     }
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -130,7 +140,11 @@ class ListRec extends SList {
     // that begins with the node referenced by nextP.
 
     {
-
+        if(nextP !=null){
+            reverseSub(nextP, nextP.getNext());
+            nextP.setNext(p);
+        }
+        else  head = p;
     }
 
     //--------------------------------------------------------------------
@@ -142,6 +156,12 @@ class ListRec extends SList {
 
     {
 
+        if(!isEmpty()) {
+            System.out.print("Delete End: ");
+            deleteEndSub(head);
+            cursor = head;
+        }
+        showStructure();
     }
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -152,6 +172,11 @@ class ListRec extends SList {
     // sublist that begins with the node referenced by p.
 
     {
+
+        if(p.getNext()!=null  ) {
+            if(p.getNext().getNext()!=null)deleteEndSub(p.getNext());
+            else  p.setNext(null);
+        }
 
     }
 
@@ -251,6 +276,37 @@ class ListRec extends SList {
 
     void iterReverse()                    // In-lab Exercise 1
     {
+        int i = length();
+        System.out.printf("Number or elements: %d\n", i);
+        Object current,  next;
+        gotoEnd();
+
+
+        while(i>1){
+            gotoBeginning();
+
+            for(int j=1; j<i; j++) {
+                System.out.print("Before: ");
+                showStructure();
+                current = cursor.getElement();
+                if (cursor.getNext() != null) {
+                    next = cursor.getNext().getElement();
+                    cursor.getNext().setElement(current);
+                    cursor.setElement(next);
+                    cursor = cursor.getNext();
+                }
+                System.out.printf("Head: %s\t j: %d\ti: %d\n", head.getElement(), j, i);
+                System.out.print("After: ");
+                showStructure();
+                System.out.println();
+
+            }
+                i--;
+        }
+
+        cursor = head;
+
+
 
     }
 
@@ -259,6 +315,19 @@ class ListRec extends SList {
 
     void stackWriteMirror()               // In-lab Exercise 1
     {
+        Stack tempStack = new AStack(length());
+        SListNode p= head;
+        System.out.print("Stack Mirror: ");
+        while ((p!=null)){
+            System.out.print(p.getElement());
+            tempStack.push(p);
+            p = p.getNext();
+        }
+        while(!tempStack.isEmpty()){
+            p = (SListNode)tempStack.pop();
+            System.out.print(p.getElement());
+        }
+        System.out.println();
 
     }
 
